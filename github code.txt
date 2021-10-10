@@ -1,0 +1,75 @@
+ //set up username
+git config --global user.name _____
+git config --global user.email ________
+git config --list
+
+//
+git init
+git status
+
+//to add file to staging area
+git add file.txt  
+git add .
+git add -A
+
+//to commit the changes
+git commit -m "Messages"
+git commit -a -m "Skipped staging area and fixed"
+
+git remote add origin "____"
+git remote set-url origin "https:..."
+git remote show origin //branches lists
+
+git push origin master
+
+//view history
+git log
+git log --oneline
+git log -p -2
+
+//to recover file
+git checkout master
+git checkout ______
+git checkout -f  //all checkout
+
+//to compare difference between working area and staged area
+git diff
+//compare staging area with last commit
+git diff --staged 
+
+//to clone file
+git clone "____"
+
+
+//branch
+git branch ___
+git branch
+git checkout ___
+git add .
+git commit -m "__"
+git checkout master
+git log --oneline
+git merge ___
+git log --oneline
+
+//create file
+touch file.txt
+git add .
+git commit -m "file.txt"
+
+//delete file
+git rm file.txt
+git rm --cached file.txt //removes only from staging area not from harddisk
+
+//git ignore file
+touch .gitignore
+
+git pull origin master
+git branch file1
+git checkout file1
+git commit -a -m "___"
+git chekout master
+git merge file1
+git branch
+git branch -d file1
+// unmerged branch file wont be deleted
