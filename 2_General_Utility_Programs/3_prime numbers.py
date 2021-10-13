@@ -25,9 +25,9 @@ n1 = int (input( "Enter starting number of range: "))
 n2 = int (input("Enter last number of range: "))
 count = 0
 if n2>n1:   
-    for x in range(n1,n2+1):
+    for x in range(n1,n2+1):    #all numbers between range
             count = 0
-            for y in range(1,x+1):
+            for y in range(1,x+1):      
                 if x%y==0:
                     count+=1
             if(count ==2 ):
