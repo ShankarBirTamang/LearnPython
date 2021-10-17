@@ -45,8 +45,8 @@ for i in range(n):
     for j in range(i+1):
         print(a[i][j] , end = " ")
     print()
-# print(a)
 
+# **********************************************************************
 
 # 3rd Method: Most optimized approach based on power of 11
 # 11**0 = 1
