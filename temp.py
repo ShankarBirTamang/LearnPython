@@ -1,34 +1,30 @@
-# 1.select pivot element ==> list[first]
-# 2.find the correct positon of pivot element ==> left = first +1 , right = last
-    # a.left<=right
-    # b. while list[left] < pivot , increment left by 1
-    # c. while list[right] > pivot , decrement right by 1
-    # d. if left < right , then swap left and right value else break
-    # e. if right < left , then swap pivot value and right value
-# 3.Sort the sublist recursively
+def countingSort(list,place):
+    size = len(list)
+    result = [0]*size
+    count = [0]*10
+    for i in range(size):
+        temp = list[i]//place
+        count[temp%10]+=1
+    for i in range(1,10):
+        count[i] += count[i-1]
 
-def pivot_location(list, f, l):
-    pivot = list[f]
-    left = f + 1
-    right = l
-    while True:
-        while left<=right and list[left]<=pivot :
-            left +=1
-        while left<=right and list[right]>=pivot:
-            right-=1
-        if left<right:
-            list[left],list[right]=list[right],list[left]
-        else:
-            break
-    list[f],list[right]=list[right],list[f]
-    return right
+    i=size-1
+    while i>= 0:
+        temp = list[i]//place
+        result[count[temp%10]-1]=list[i]
+        count[temp%10] -=1
+        i -= 1
 
-def quickSort(list , f , l):
-    if f <l:
-        p = pivot_location(list , f , l)
-        quickSort(list,f,p-1)
-        quickSort(list,p+1,l)
+    for i in range(size):
+        list[i]=result[i]
 
-mlist = [5 , 4 ,3, 1 ,2 ]
-quickSort(mlist,0,len(mlist)-1)
-print(mlist)
+def radixSort(mlist):
+    m = max(mlist)
+    place = 1
+    while m//place>0:
+        countingSort(mlist,place)
+        place = place * 10
+
+mlist= list(map(int,input("Enter the number: ").split()))
+radixSort(mlist)
+print("Sorted list: ",mlist)

@@ -2,17 +2,14 @@
 # It is the fastest known algorithm .Also known as Partition Exchange Sort. Faster than Heap sort and merge sort.
 
 # Algorithm's steps  :
-# 1.Select the pivot element.
-# 2.Find out the correct position of pivot element in the list by rearranging it.
-# 3.Divide the list based on pivot element.
-# 4.Sort the sublist recursively.
-
-# condition to find the place of pivot element: 
-# 1. left<= right
-# 2. a[left] <= pivot , then increment left by 1 
-# 3. a[right] >= pivot , then decrement right by 1
-# 4. if above condition fails and right > left swap left and right value
-# 5. If right < left , then swap pivot and right value of the list
+# 1.select pivot element ==> list[first]
+# 2.find the correct positon of pivot element ==> left = first +1 , right = last
+    # a.left<=right
+    # b. while list[left] < pivot , increment left by 1
+    # c. while list[right] > pivot , decrement right by 1
+    # d. if left < right , then swap left and right value else break
+    # e. if right < left , then swap pivot or first value and right value
+# 3.Sort the sublist recursively
 
 # To get the correct position of the pivot elements
 def pivot_position(mlist,first , last):
