@@ -1,4 +1,4 @@
-# Limitation : This program can't delete root node when it has only one child
+# Limitation : This program can't delete root node when it has only one subtree(child)
 class BST(object):
     def __init__(self,value):
         self.value = value
@@ -95,12 +95,12 @@ class BST(object):
 # main
 tree = BST(6)
 tree.left = BST(4)
-# tree.right = BST(7)
+tree.right = BST(7)
 tree.left.left = BST(2)
 tree.left.right = BST(5)
-# tree.right.right = BST(8)
-# tree.left.left.left = BST(1)
-# tree.left.left.right = BST(3)
+tree.right.right = BST(8)
+tree.left.left.left = BST(1)
+tree.left.left.right = BST(3)
 print("Preorder(N,L,R):",tree.preorder_print(tree,""))
 print("Inorder(L,N,R): ",tree.inorder_print(tree,""))
 print("Postorder(L,R,N): ",tree.postorder_print(tree,""))
