@@ -54,6 +54,24 @@ class BinaryTree(object):
             if node.right:
                 queue.enqueue(node.right)
         return traversal
+    
+    # Alternative method
+    def levelorder(self,start):
+        result=[]
+        level = []
+        queue = [start]
+        while len(queue)>0 and start is not None:
+            for node in queue:
+                if node.left :
+                    level.append(node.left)
+                if node.right:
+                    level.append(node.right)
+            for i in range(len(queue)):
+                result.append(queue[i].value)
+                # print(result)
+            queue = level
+            level = []
+        return result
 
 #               1
 #              /  \
@@ -73,4 +91,5 @@ tree.root.right.right = Node(6)
 tree.root.left.left.left = Node(7)
 tree.root.left.left.right = Node(8)
 
-print("Level order traversal: ",tree.levelorder_print(tree.root))
+print("Level order traversal(string): ",tree.levelorder_print(tree.root))
+print("Level order(list): ",tree.levelorder(tree.root))

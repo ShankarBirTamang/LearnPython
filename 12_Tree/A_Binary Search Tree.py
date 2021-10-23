@@ -230,21 +230,55 @@ class BST(object):
             return 0
         return 1+(self.count(node.left))+self.count(node.right)
 
+    def right_view(self,start): 
+        result = []
+        level = []
+        queue = [start]
+        while len(queue)>0 and start is not None :
+            for node in queue:
+                if node.left:
+                    level.append(node.left)
+                if node.right:
+                    level.append(node.right)
+            result.append(node.value)
+            queue = level
+            level = []
+        return result  
+    
+    def left_view(self,start):
+        result=[]
+        level = []
+        queue = [start]
+        while len(queue)>0 and start is not None:
+            for node in queue:
+                if node.left :
+                    level.append(node.left)
+                if node.right:
+                    level.append(node.right)
+            result.append(queue[0].value)
+            # to check the value of queue at each level
+            # for i in range(len(queue)):
+            #     print(queue[i].value,end = " ")
+            # print()
+            queue = level
+            level = []
+        return result
+
 tree = BST(None)
-print("Binary Search Tree created with an empty node.")
-print("Enter any no. (1 to 5): ")
-print("1.INSERTION\n2.SEARCH\n3.DELETION\n4.PREORDER TRAVERSAL\n5.INORDER TRAVERSAL")
-print("\n6.POST ORDER TRAVERSAL\n7.LEVEL ORDER TRAVERSAL\n8.REVERSE ORDER TRAVERSAL")
-print("\n9.HEIGHT\n10.SIZE\n11.MAXIMUM\n12.MINIMUM\n13.INVERT BST")
-num = int(input())
-myswitch = {
-	1: "ONE",
-	2: "TWO",
-	3: "THREE",
-	4: "FOUR",
-	5: "FIVE"
-}
-myswitch.get(num)
+# print("Binary Search Tree created with an empty node.")
+# print("Enter any no. (1 to 5): ")
+# print("1.INSERTION\n2.SEARCH\n3.DELETION\n4.PREORDER TRAVERSAL\n5.INORDER TRAVERSAL")
+# print("\n6.POST ORDER TRAVERSAL\n7.LEVEL ORDER TRAVERSAL\n8.REVERSE ORDER TRAVERSAL")
+# print("\n9.HEIGHT\n10.SIZE\n11.MAXIMUM\n12.MINIMUM\n13.INVERT BST")
+# num = int(input())
+# myswitch = {
+# 	1: "ONE",
+# 	2: "TWO",
+# 	3: "THREE",
+# 	4: "FOUR",
+# 	5: "FIVE"
+# }
+# myswitch.get(num)
 list1 = list(map(int,input("Enter the values to be inserted in the BST: ").split()))
 for i in list1:
     tree.insert(i)
@@ -256,6 +290,7 @@ print("Level order: ",tree.levelorder_print(tree))
 print("Reverse Order: ",tree.reverseorder_print(tree))
 tree.invert_BST(tree)
 print("Levelorder after Inverted: ",tree.levelorder_print(tree))
+tree.invert_BST(tree)
 
 num = int(input("Enter the item to be searched: "))
 tree.search(num)
@@ -274,3 +309,5 @@ for i in list2:
 
 print("Height of tree:",tree.height(tree))
 print("Total no of nodes: ",tree.count(tree))
+print("Right view of binary tree: ",tree.right_view(tree))
+print("Left view of binary tree: ",tree.left_view(tree))
